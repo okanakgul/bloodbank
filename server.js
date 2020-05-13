@@ -52,7 +52,21 @@ function uploadBloodbank() {
 
 uploadBloodbank();
 
-app.post("/bloodbank", function(request, response) {
+app.post("/newBloodbank", function(request, response) {
+  bloodbank = new BloodBank();
+
+  bloodbank.save(function(err, savedBloodbank) {
+    if (err) {
+      response.status(500).send({ error: "Could not save bloodbank" });
+    } else {
+      response.setHeader("Access-Control-Allow-Origin", "*");
+      response.status(200).send(savedBloodbank);
+    }
+  });
+});
+
+
+app.post("/bloodbankUpdate", function(request, response) {
   bloodbank = new BloodBank();
   
   bloodbank.update(function(err, updatedBloodbank) {
