@@ -72,7 +72,7 @@ app.post("/bloodbank", function(request, response) {
           });
       });
       response.setHeader("Access-Control-Allow-Origin", "*");
-      response.status(200).send(updatedBloodbank);
+      response.status(200).send(bloodbank);
     }
   });
 });
