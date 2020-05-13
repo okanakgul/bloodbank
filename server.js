@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var cors = require('cors')
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var db = mongoose.connect("mongodb://localhost/bloodbank");
@@ -13,6 +14,7 @@ var ReqStatus = require("./model/requestStatus");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 /*app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -26,6 +28,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
       return res.status(200).json({});
     }
 });*/
+
+
+
 
 var bloodbank;
 
